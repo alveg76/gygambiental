@@ -2,7 +2,7 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 
 // Definimos las propiedades que nuestro componente aceptará
 interface SectionProps {
@@ -13,7 +13,7 @@ interface SectionProps {
 }
 
 // Variantes de animación para Framer Motion
-const sectionVariants = {
+const sectionVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
   visible: {
     opacity: 1,
@@ -27,7 +27,7 @@ const sectionVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
