@@ -4,12 +4,12 @@
 import React, { useState, useEffect, } from 'react';
 
 const videoSources = [
-  '/videos/Video1.mp4',
-  '/videos/Video2.mp4',
-  '/videos/Video3.mp4',
-  '/videos/Video4.mp4',
-  '/videos/Video5.mp4',
-  '/videos/Video6.mp4',
+  '/videos/video1.mp4',
+  '/videos/video2.mp4',
+  '/videos/video3.mp4',
+  '/videos/video4.mp4',
+  '/videos/video5.mp4',
+  '/videos/video6.mp4',
 ];
 
 const Hero = () => {
