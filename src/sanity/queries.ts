@@ -18,3 +18,12 @@ export const SERVICES_QUERY = groq`*[_type == "service"]{
   title,
   content
 }`;
+
+export const PROFILE_QUERY = groq`*[_type == "profile"][0]{
+  _id,
+  heading,
+  subheading,
+  profileImage,
+  bioPart1,
+  bioPart2
+}`;

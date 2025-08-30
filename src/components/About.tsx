@@ -1,67 +1,55 @@
 // components/About.tsx
-'use client'; // Necesario para Framer Motion
-
 import React from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { client } from '@/sanity/client'; // Importamos el cliente de Sanity
+import { PROFILE_QUERY } from '@/sanity/queries'; // Importamos la nueva consulta
+import { urlFor } from '@/sanity/image'; // Importamos el helper de imágenes
 
-const About = () => {
+// Convertimos el componente a `async` para poder usar `await`
+export default async function About() {
+  // Buscamos los datos del perfil en Sanity
+  const profileData = await client.fetch(PROFILE_QUERY);
+
+  // Es una buena práctica verificar si los datos existen
+  if (!profileData) {
+    return <section id="perfil"></section>; // No renderizar nada si no hay datos
+  }
+
   return (
-    <motion.section
-      id="perfil"
-      className="py-20 bg-white"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.8 }}
-    >
+    // Mantenemos la animación que ya tenías
+    <section id="perfil" className="py-20 bg-white">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center gap-12">
           
-          {/* Animación para la imagen */}
-          <motion.div
-            className="md:w-1/3 w-full flex justify-center"
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
+          {/* Columna de la Imagen (ahora dinámica) */}
+          <div className="md:w-1/3 w-full flex justify-center">
             <Image
-              src="/images/profile-photo.jpg" 
+              src={urlFor(profileData.profileImage).width(300).height(300).url()} 
               alt="Foto de Jennyfer Garzón, Directora de G&G Ambiental"
               width={300}
               height={300}
               className="rounded-full object-cover w-[250px] h-[250px] md:w-[300px] md:h-[300px] shadow-lg border-4 border-green-leaf"
             />
-          </motion.div>
+          </div>
 
-          {/* Animación para el bloque de texto */}
-          <motion.div
-            className="md:w-2/3 w-full"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
+          {/* Columna del Texto (ahora dinámica) */}
+          <div className="md:w-2/3 w-full">
             <h2 className="font-serif text-3xl font-bold text-blue-deep mb-4">
-              G&G Ambiental: Liderazgo y Experiencia a su Servicio
+              {profileData.heading}
             </h2>
             <h3 className="font-sans text-xl text-gray-600 mb-4">
-              Dirigidos por Jennyfer M. Garzón Gutiérrez
+              {profileData.subheading}
             </h3>
             <p className="font-sans text-gray-700 leading-relaxed mb-4">
-              **G&G Ambiental** es una firma de consultoría dedicada a ofrecer soluciones integrales y sostenibles en planificación territorial, gestión de recursos y cumplimiento normativo.
+              {profileData.bioPart1}
             </p>
             <p className="font-sans text-gray-700 leading-relaxed mb-6">
-              Bajo la dirección de la Ingeniera Jennyfer Garzón, combinamos rigor técnico, innovación y un profundo conocimiento del territorio para garantizar resultados exitosos.
+              {profileData.bioPart2}
             </p>
-            
-          </motion.div>
+          </div>
 
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 };
-
-export default About;
