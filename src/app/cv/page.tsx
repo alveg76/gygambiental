@@ -131,7 +131,7 @@ export default function CvPage() {
             </Entry>
             
             <Entry title="Consultora interventoría documento de sustracción de reserva forestal" institution="INVIAS" date="Nov 2017 - Jul 2018">
-                <p>Dirección de la interventoría para el cumplimiento del requerimiento ambiental, en lo que respecta a la evaluación para la sustracción definitiva de siete (7) hectáreas aproximadamente, de la reserva forestal de la Sierra Nevada Santa Marta, del proyecto denominado: “Construcción y Mejoramiento de la Carretera Valledupar - Maicao, Sector Valledupar – San Juan Del Cesar". 2017-2018 (8 personas a cargo).</p>
+                <p>Dirección de la interventoría para el cumplimiento del requerimiento ambiental, en lo que respecta a la evaluación para la sustracción definitiva de siete (7) hectáreas aproximadamente, de la reserva forestal de la Sierra Nevada Santa Marta, del proyecto denominado: &ldquo;Construcción y Mejoramiento de la Carretera Valledupar - Maicao, Sector Valledupar – San Juan Del Cesar&rdquo;. 2017-2018 (8 personas a cargo).</p>
             </Entry>
 
             <Entry title="Directora Técnica/ Ingeniera Ambiental" institution="Géminis Consultores S.A.S" date="Feb 2012 - Abr 2014">
